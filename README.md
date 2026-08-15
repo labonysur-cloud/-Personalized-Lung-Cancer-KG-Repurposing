@@ -1,16 +1,111 @@
 # An Explainable Knowledge Graph-Based Framework for Personalized Drug Repurposing for Bangladeshi Lung Cancer Patients
 
 ```text
-       .---.       .---.           \     /
-      /     \     /     \           \   /
-     |       |   |       |           | |
-     |       |   |       |          /   \
-      \     /     \     /          /     \
-       `---'       `---'          |       |
-         L U N G S                 \     /
-                                    \   /
-                                     | |
-                                     DNA
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠀⠀⢠⣄⠀⠀⠀⠀⣿⣷⣦
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣦⠘⢶⣄⠀⠙⠳⣤⣀⠀⣿⣿⡇
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣄⠀⠉⠛⠦⣄⡀⠉⢱⡿⣹⠁
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⢀⠀⣿⣿⡗⠦⣄⠀⠀⢉⣴⣟⡴⠃⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣤⢶⡚⣿⣯⣭⣽⣯⣽⣿⡇⣷⠲⣾⣒⣿⡯⠟⠋⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡴⠻⣍⡼⠿⣯⠉⠈⠛⢦⡈⠛⢦⣿⣸⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⡏⣰⠞⢿⣄⠀⠈⠳⣄⠀⠀⠙⠶⡄⢸⡇⣇⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡿⢠⡏⠀⠀⠙⢷⣄⠀⠈⠳⣄⠀⠀⠘⢺⡇⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⣇⢸⠻⣦⡀⠀⠀⠈⠳⣄⠀⠈⠳⣄⠀⣼⠁⡟⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣼⡆⠈⠛⣦⡀⠀⠀⠈⠑⢤⡀⠈⢳⠟⣸⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢹⠹⡷⣄⡀⠀⠙⠶⣄⡀⠀⠀⢙⠶⠋⣠⡟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡄⢧⠈⠛⢦⣀⠀⣀⣩⡷⠞⣁⣤⠾⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⡤⠶⢶⣚⣉⣹⣿⣿⡇⢸⣖⣲⡶⣟⣯⣯⣶⠷⠛⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⢾⣿⣁⣠⠴⠞⠛⢻⣍⠀⠀⠀⣧⣸⠉⠉⠉⠉⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰⡾⠁⣿⠞⠹⣦⡀⠀⠀⠀⠈⠳⣄⠀⣿⣸⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⡏⢹⣾⡁⠀⠀⠈⠻⣦⡀⠀⠀⠀⠈⠳⡿⢹⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡿⢀⡟⠀⠹⢦⡀⠀⠀⠀⠙⢦⡀⠀⠀⠀⣿⢸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢺⢧⡼⠀⠀⠀⠀⠙⠷⣄⠀⠀⠀⠙⢦⡀⢀⡿⣸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣾⠈⡟⠷⣤⡀⠀⠀⠀⠈⠙⢦⣀⠀⠀⠙⡾⢠⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠀⣇⠀⠀⠙⠢⣄⠀⠀⠀⠀⠈⣳⣤⠞⣡⠟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣠⣼⣷⣿⣿⣿⣿⣿⣛⣛⣛⣻⣻⣋⣡⠾⠛⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⢀⣠⡤⠞⣿⣿⣷⡟⢻⣿⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⣠⣶⣟⣡⠶⠋⠁⠀⠈⠳⣼⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⢀⡼⣻⡿⠋⠻⢦⣀⠀⠀⠀⠀⠈⣿⣧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⣾⣻⠋⠀⠀⠀⠀⠈⠛⠦⣄⡀⣰⣿⡟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⢸⣿⡿⠦⢤⣘⣢⠄⠀⠀⠀⠈⠙⣿⣳⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⢸⣿⠂⠀⠀⠈⠉⠓⠒⠂⠀⠀⠀⠈⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠈⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀                                                              ░░██████▓▓▒▒▒▒▓▓██████                                                              
+                                                              ░░████████████████████                                                              
+                                                                ████████████████████                                                              
+                                                                ▓▓██████████████████                                                              
+                                                                ████████████████████                                                              
+                                                                ██████████████████▓▓                                                              
+                                                                ▒▒████████████████▒▒                                                              
+                                                                ░░████████████████                                                                
+                                                                  ████████████████                                                                
+                                                                    ████████████                                                                  
+                                                                    ████████████                                                                  
+                                                                  ░░████████████                                                                  
+                                                                    ████████████                                                                  
+                                                                    ████████████                                                                  
+                                                                    ████████████                                                                  
+                                                                    ██████████▓▓                                                                  
+                                                                    ██████████▓▓                                                                  
+                                          ░░░░▒▒░░░░                ██████████▓▓              ░░░░▒▒░░░░░░                                        
+                                      ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒            ██████████▓▓          ░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒                                      
+                                  ░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒          ████████████        ░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░                                  
+                                ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░        ██████████▓▓      ░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░                              
+                              ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▒▒▒▒▒▒▒▒        ████████████      ▒▒▒▒▒▒▒▒▒▒██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░                            
+                          ░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▒▒▓▓▓▓▒▒░░      ▓▓████████▓▓      ▒▒▒▒▓▓██▒▒██▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒                          
+                        ░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓████▓▓▓▓██▓▓▒▒▒▒      ████████████    ░░▒▒▒▒████▒▒██████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒                        
+                      ░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██▒▒██████▓▓██▒▒██▒▒░░    ████████████    ▒▒▒▒██▓▓██▒▒████▒▒▓▓██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒                      
+                    ░░▒▒▒▒▒▒▒▒▒▒██▓▓▒▒▓▓████▓▓░░██████████▓▓▒▒▒▒    ████████████    ▒▒▒▒██████████▓▓▒▒██████▒▒▒▒██▓▓▒▒▓▓▒▒▒▒░░                    
+                  ░░▒▒▒▒▒▒████▒▒████▒▒▒▒▓▓████▒▒██████████▒▒▓▓▒▒    ████████████  ░░▒▒██▓▓████████▒▒▓▓████▒▒▒▒▓▓██▓▓▓▓██▒▒▒▒▒▒░░                  
+                ░░▒▒▒▒▒▒▒▒▒▒██▓▓████▒▒▒▒▒▒▓▓████▒▒████████████▒▒░░  ████████████  ▒▒▒▒████████████▒▒████▓▓▒▒▒▒▓▓▓▓▒▒██▓▓▒▒▒▒▒▒▒▒                  
+              ░░▒▒▒▒▒▒▒▒▒▒▒▒▓▓██████████▒▒▒▒██████████████▓▓▒▒▒▒░░  ██████████▓▓  ▒▒▒▒▒▒██████████████▓▓▒▒▓▓██████████▒▒▒▒▒▒▒▒▒▒▒▒                
+              ▒▒▒▒▒▒▒▒▒▒▒▒▓▓██████████████▒▒▓▓████████████▒▒▒▒▒▒▒▒  ▓▓████████▒▒  ▒▒▒▒▒▒▒▒████████████▒▒▓▓▓▓▓▓████████▓▓▒▒▒▒▒▒▒▒▒▒░░              
+            ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██████████▒▒▓▓████████▓▓▒▒▓▓▓▓▒▒  ██████████▓▓░░▓▓▓▓▒▒▒▒████████▓▓░░▓▓████████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░            
+          ░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓▒▒▒▒▓▓██▓▓████████████▓▓▓▓████▒▒░░▒▒████████▒▒▒▒▒▒██▓▓▓▓██████████████████▒▒▒▒▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░          
+          ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓██████████▓▓██████████████████████▓▓▒▒▒▒██████████▓▓▒▒▒▒▓▓████████████████████▓▓██▓▓████████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒          
+        ░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓██████████████████████████▓▓▒▒▒▒▒▒████████▓▓▓▓▒▒▒▒▒▒████████████████████████████▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░        
+        ▒▒▒▒▒▒▒▒▒▒▓▓▒▒▒▒▒▒▒▒▒▒▒▒▓▓██▓▓▓▓▓▓██████████████▓▓▒▒▒▒▒▒▒▒▓▓████████████▓▓▒▒▒▒▒▒▒▒████████▓▓██████▒▒▓▓████▒▒▒▒▒▒▒▒▒▒▒▒▓▓▒▒▒▒▒▒▒▒▒▒░░      
+      ░░▒▒▒▒████████▓▓██▓▓████▒▒▒▒▒▒▓▓██████▓▓████████████▒▒▒▒▒▒████████████████████▒▒▒▒▒▒██████████▓▓▓▓██████▓▓▒▒▒▒▓▓██▓▓▓▓████████▓▓▒▒▒▒▒▒░░    
+      ▒▒▒▒▒▒▒▒▒▒▒▒██████████████▓▓██████████████████████████▓▓████████████████████████▓▓████████████████████████▓▓▓▓████████████▒▒▒▒▒▒▒▒▒▒▒▒▒▒    
+    ░░▒▒▒▒▒▒▒▒▒▒▓▓██████████████████████████████████████████████████████████████████████████████████████████▓▓██████████████████▓▓▒▒▒▒▒▒▒▒▒▒▒▒░░  
+    ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓██████████▒▒▒▒▓▓████████████████░░    ▒▒▓▓██████████████▒▒▒▒▓▓████████████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒  
+  ░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██▓▓▒▒▒▒▒▒▓▓▓▓▓▓▒▒▒▒▒▒██▒▒▒▒▒▒▒▒████████████▓▓▒▒░░    ▒▒▒▒▒▒██████████▓▓▒▒▒▒▒▒██▓▓▒▒▒▒▒▒▓▓▓▓▒▒▒▒▒▒▒▒██▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░
+  ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██████▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓████████████▒▒▒▒▒▒░░    ▒▒▒▒▒▒▒▒▓▓██████████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓██████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+  ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒████████████▓▓▓▓██▓▓▒▒▒▒▓▓████████████▓▓▒▒▒▒▒▒▒▒▒▒    ▒▒▒▒▒▒▒▒▒▒▓▓████████████▒▒▒▒▒▒██▓▓▓▓████████████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+  ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓████████████████▓▓██████▓▓████▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒    ▒▒▒▒▒▒▒▒▒▒▒▒▓▓████████████████████████████████▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+░░▒▒▒▒▒▒▒▒▒▒▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓████████████████████████████▒▒▒▒▒▒▒▒▒▒▒▒▒▒    ▒▒▒▒▒▒▒▒▒▒▒▒▒▒██████▓▓██████████████████▓▓▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒
+░░▒▒▒▒▒▒▒▒██████▓▓▒▒▒▒▒▒▒▒▓▓▓▓▓▓████████████████████████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒    ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██▓▓████████████████████▓▓▓▓▒▒▒▒▒▒▒▒▓▓██████▓▓▒▒▒▒▒▒▒▒
+░░▒▒▒▒▒▒██████████▒▒▒▒▒▒▒▒████████████████████████████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒  ░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██▓▓████████████████████████▒▒▒▒▒▒██████████▓▓░░▒▒▒▒
+░░▒▒▒▒▒▒▒▒▓▓████████▒▒▒▒▒▒██████████████▓▓▒▒▓▓██▓▓██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒  ░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓████▓▓▒▒▒▒██████████████▓▓▒▒▒▒██▓▓▓▓██▓▓▒▒▒▒▒▒▒▒▒▒
+░░▒▒▒▒▒▒▒▒░░▒▒████▓▓██▓▓████████████████░░▒▒▒▒████▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒    ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓████▓▓▒▒▒▒▒▒████████████████████████▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+░░▒▒▒▒▒▒▒▒▒▒▓▓▓▓██████████████████████▒▒▒▒▒▒██▓▓████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒    ▒▒▒▒▒▒▒▒▓▓▓▓▒▒▒▒▒▒▓▓████████▒▒▒▒████████████████████████▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+░░▒▒▒▒▒▒▒▒▒▒████▓▓██████████████████▓▓▒▒▒▒██████████▒▒▒▒▒▒▓▓▓▓▒▒▒▒▒▒▒▒▒▒    ▒▒▒▒▒▒▒▒▒▒▓▓██▒▒▒▒▓▓██████████▒▒▓▓██████████████████▓▓████▒▒▒▒▒▒▒▒▒▒▒▒
+░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒████████▓▓██████████▒▒▓▓████████████████████▓▓▓▓▒▒▒▒▒▒▒▒    ▒▒▒▒▒▒▒▒▓▓██████████████████████▒▒▒▒██████████████████▒▒░░▒▒▒▒▒▒▒▒▒▒▒▒
+░░▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓████▓▓██▒▒▓▓████▒▒▒▒████████████████████▒▒▒▒▒▒░░▒▒▒▒▒▒    ▒▒▒▒▒▒▒▒▒▒▒▒▓▓██▓▓████████████████▒▒▓▓████▒▒▓▓██████▒▒▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓██████▒▒▓▓████▒▒▒▒████████████████▓▓████▒▒▒▒▒▒▒▒▒▒▒▒░░    ▒▒▒▒▒▒▒▒▒▒▒▒▓▓████▓▓██████████████▓▓▒▒▓▓████▒▒▓▓████▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▒▒▒▒▒▒████████████████▓▓▒▒████▓▓▒▒▒▒▒▒▒▒▒▒░░    ▒▒▒▒▒▒▒▒▒▒▒▒████▒▒▒▒████████████████▓▓▒▒▒▒▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░▒▒▓▓▒▒▒▒▒▒▒▒▓▓████▓▓████████████▓▓▒▒▒▒▒▒▓▓▒▒▒▒▒▒▒▒▒▒░░    ░░▒▒▒▒▒▒▒▒▒▒▒▒▓▓▒▒▒▒████████████████████▒▒▒▒▒▒▒▒▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██████▒▒▒▒▒▒████████████████████████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒      ░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██████████████████████▓▓▒▒▒▒▓▓██▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓████▓▓▓▓██████████████████████████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒      ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██████████████████████████▓▓████▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+▒▒▒▒▒▒▒▒▒▒▓▓▒▒▒▒▓▓██████████████████████████████████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒      ░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓████████████▓▓██████████████████▓▓▒▒▒▒▓▓▓▓▒▒▒▒▒▒▒▒
+▒▒▒▒▒▒▒▒▓▓██▓▓▓▓▓▓██▓▓▒▒██████▓▓▒▒▒▒████████████████▒▒▒▒▓▓██▒▒▒▒▒▒▒▒▒▒      ░░▒▒▒▒▒▒▒▒▒▒██▒▒▒▒▓▓▓▓████████████▓▓▒▒▒▒██████▓▓▓▓████▓▓████▓▓▓▓▒▒▒▒▒▒
+▒▒▒▒▒▒▒▒██████████▒▒▒▒▒▒██████▒▒▒▒▒▒██████████████████▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒        ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓████████████████▓▓▒▒▒▒▒▒██████▒▒▒▒██████████▓▓▒▒▒▒▒▒
+▒▒▒▒▒▒▓▓██████▒▒▒▒▒▒██████████▒▒▒▒████▓▓▓▓██████████████████▒▒▒▒▒▒▒▒▒▒      ░░▒▒▒▒▒▒▒▒▓▓██▓▓██████████████▒▒████▓▓▒▒▒▒████████▒▒▒▒▓▓████████▓▓▒▒▒▒
+▒▒▒▒▒▒████▒▒▒▒▓▓▒▒▒▒▒▒▒▒████▓▓▒▒████▓▓▒▒▓▓██████▒▒██▓▓▒▒▓▓▒▒▒▒▒▒▒▒▒▒▒▒        ▒▒▒▒▒▒▒▒▒▒▓▓▓▓▒▒████▒▒██████▓▓▒▒████▓▓▒▒██████▒▒▒▒▒▒▓▓▒▒▒▒████▓▓▓▓▒▒
+░░▒▒▒▒▒▒▒▒▒▒▒▒▓▓██▒▒▒▒██▓▓██▒▒▓▓████▒▒▓▓██████▒▒▒▒██▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒        ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██▓▓▒▒████▓▓██▒▒██████▒▒▓▓██▓▓▒▒▒▒██▓▓▒▒▒▒░░▒▒▒▒▒▒▒▒
+░░▒▒▒▒▒▒▒▒▒▒▒▒████▓▓▓▓████▓▓▒▒██████▒▒▓▓██████▒▒▒▒████▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░        ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██▓▓▒▒▓▓██████▒▒▓▓████▒▒▒▒██████▓▓████▒▒▒▒▒▒░░▒▒▒▒▒▒
+░░▒▒▒▒▒▒▓▓██████▓▓▓▓██████▒▒▒▒██████▒▒████████▒▒▒▒████▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░        ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓██▓▓▒▒████████▒▒▓▓████▓▓▒▒▓▓████▓▓▓▓████████▓▓▒▒▒▒▒▒
+░░▒▒▒▒▒▒██▓▓██▓▓▒▒▒▒██▓▓██▒▒▒▒██████▒▒▓▓██▒▒██▓▓▒▒▓▓████▒▒▒▒▒▒▒▒▒▒▒▒          ░░▒▒▒▒▒▒▒▒▒▒▒▒████▒▒▒▒████▓▓██▒▒▒▒██████▒▒▒▒████▒▒▒▒▓▓██████▓▓▒▒▒▒▒▒
+░░▒▒▒▒▒▒▒▒▓▓██▒▒▒▒▓▓██████▒▒▓▓████▓▓▒▒▓▓██▒▒████▓▓▒▒██████▒▒▒▒▒▒▒▒▒▒            ▒▒▒▒▒▒▒▒▒▒████▓▓▒▒████▓▓▒▒██▒▒▒▒██████▒▒▒▒████▓▓▒▒▒▒██▓▓▒▒▒▒▒▒▒▒▒▒
+░░▒▒▒▒▒▒▒▒██▓▓▒▒▒▒████████▒▒▒▒▓▓██▒▒▓▓██▓▓▒▒██████▒▒▒▒██▓▓▒▒▒▒▒▒▒▒              ░░▒▒▒▒▒▒▓▓▒▒██▒▒▓▓██████▒▒████▒▒▓▓██▒▒▒▒▒▒██████▒▒▒▒████▒▒▒▒▒▒▒▒▒▒
+  ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓████████▒▒▒▒██▒▒▓▓██████▒▒██████▓▓▒▒▓▓▒▒▒▒▒▒▒▒░░                ▒▒▒▒▒▒▒▒▓▓▒▒▒▒████████▒▒██████▒▒▒▒▓▓▒▒▒▒██████▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+  ▒▒▒▒▒▒▒▒▒▒▒▒▓▓██████████▒▒▒▒▒▒▒▒████▒▒▓▓▒▒██▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░                    ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒████▒▒▓▓▓▓██▓▓▒▒▒▒▒▒▒▒████████▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+  ▒▒▒▒▒▒▒▒▒▒▓▓████▓▓▓▓██▓▓▒▒▒▒▒▒▒▒██▓▓▒▒▒▒▒▒████▒▒▒▒▒▒▒▒▒▒▒▒░░                        ▒▒▒▒▒▒▒▒▒▒▒▒▒▒██▓▓▒▒▒▒██▒▒██▒▒▒▒▒▒▒▒▒▒██▒▒████▓▓▒▒▒▒▒▒▒▒▒▒▒▒
+  ▒▒▒▒▒▒▒▒▓▓██████▒▒▓▓██▒▒▒▒▒▒▒▒▒▒██▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░                              ░░▒▒▒▒▒▒▒▒▒▒▓▓▒▒▒▒▒▒▓▓▒▒▓▓▒▒▒▒▒▒▒▒▒▒██▒▒██████▓▓▒▒▒▒▒▒▒▒▒▒
+  ░░▒▒▒▒▒▒████████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░                                      ░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒████████▒▒▒▒▒▒▒▒░░
+    ▒▒▒▒▒▒▒▒██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░                                              ░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██▒▒▒▒▒▒▒▒▒▒  
+    ░░▒▒▒▒▒▒▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░                                                      ░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░░░  
+      ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒                                                              ░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒    
+        ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░░░                                                                      ░░░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░      
 ```
 
 ## Abstract
@@ -45,15 +140,16 @@ Traversing the graph topology to extract human-readable molecular paths that med
 Step 5: Rigorous Validation
 Benchmarking performance using AUROC/AUPRC metrics, performing ablation studies, and cross-validating predictions with ClinicalTrials.gov and PubMed literature.
 
-## Underexplored & Public Datasets
+## Public Datasets: What, Why, and How?
 
 To ensure high model fidelity without compromising reproducibility, we utilize several underexplored and highly robust public datasets. All processing is strictly performed via Kaggle environments to eliminate local computational bottlenecks.
 
 ### 1. Open Targets Platform (Gene-Disease Associations)
-Why we use it: Open Targets provides the most comprehensively curated genetic associations for Non-Small Cell Lung Carcinoma (MONDO:0005233). It is superior to older databases because it actively integrates multi-omics evidence.
-Link: https://platform.opentargets.org
+* **What it is:** A comprehensive biomedical platform mapping genes to diseases.
+* **Why we use it:** Open Targets provides the most rigorously curated genetic associations specifically for Non-Small Cell Lung Carcinoma (MONDO:0005233). It actively integrates multi-omics evidence (RNA-seq, genetics, animal models), making it superior to older, static databases.
+* **How we use it:** We query the GraphQL API to extract the top NSCLC-associated targets along with their statistical association scores.
 
-Python Snippet for Extraction:
+Python Code Snippet for Extraction:
 ```python
 import requests
 query = """
@@ -70,22 +166,24 @@ response = requests.post(url, json={"query": query})
 ```
 
 ### 2. STRING API (Protein-Protein Interactions)
-Why we use it: STRING provides physical and functional protein interaction networks. Instead of downloading static massive files, we use their v12 API to fetch dynamically updated network edges specifically for our identified NSCLC targets.
-Link: https://string-db.org
+* **What it is:** A database of known and predicted protein-protein interactions.
+* **Why we use it:** Rather than downloading a generic 50GB file containing all human proteins, we use the API to dynamically fetch interactions specific only to our identified NSCLC targets. This ensures our graph is focused and computationally efficient.
+* **How we use it:** We map the Open Targets genes to UniProt IDs, then query the STRING v12 API to establish structural and functional interaction edges (`target_interacts_target`).
 
-Python Snippet for Extraction:
+Python Code Snippet for Extraction:
 ```python
 import requests
 url = "https://version-12-0.string-db.org/api/json/network"
-params = {"identifiers": "TP53%0dEGFR", "species": 9606}
+params = {"identifiers": "TP53%0dEGFR", "species": 9606} # 9606 = Human
 response = requests.post(url, data=params)
 ```
 
 ### 3. ChEMBL API (Drug-Target Interactions)
-Why we use it: ChEMBL is highly underexplored in standard baseline GNNs which usually rely heavily on DrugBank. ChEMBL provides open-access, dynamic bioactivity data crucial for finding novel binding affinities.
-Link: https://www.ebi.ac.uk/chembl/
+* **What it is:** An open-access database of bioactive molecules with drug-like properties.
+* **Why we use it:** ChEMBL provides rich pharmacological bioactivity data (IC50, Kd, Ki), which is highly underexplored in standard baseline GNNs that typically rely on basic DrugBank extracts. 
+* **How we use it:** We query the ChEMBL API mechanism endpoint to extract approved and experimental drugs that bind to our NSCLC target proteins, creating `drug_targets_protein` edges.
 
-Python Snippet for Extraction:
+Python Code Snippet for Extraction:
 ```python
 import requests
 url = "https://www.ebi.ac.uk/chembl/api/data/mechanism?target_component__accession=P00533&format=json"
@@ -93,7 +191,54 @@ res = requests.get(url)
 ```
 
 ### 4. Primary Dataset (Bangladeshi Patient Cohort)
-Why we use it: This proprietary dataset injects localization into the global graph. It contains Variant Allele Frequencies (VAF) which will dynamically scale edge weights in the GNN. Note: Due to ethical constraints, raw patient data is not publicly shared in this repository.
+* **What it is:** A proprietary clinical dataset featuring somatic mutation profiles from Bangladeshi lung cancer patients.
+* **Why we use it:** This dataset injects crucial geographic localization into the global graph. The Variant Allele Frequencies (VAF) from these patients will dynamically scale the edge weights in our GNN, achieving true personalization.
+* **How we use it:** The VAF scores are mapped onto the `target_associates_disease` edges to re-weight the global graph into a patient-specific graph. *(Note: Due to ethical constraints, raw patient data is not publicly shared in this repository.)*
+
+## 🔗 Data Merging & Graph Construction
+
+To train our R-GCN, the isolated datasets fetched above must be unified into a single, cohesive Heterogeneous Knowledge Graph represented by `nodes.csv` and `edges.csv`.
+
+### Step-by-Step Merging Logic
+1. **Node Standardization:** We extract all unique entities (Diseases, Targets, Drugs) across all 3 datasets. We assign a unique continuous integer `node_id` to every entity. We track the `node_type` (e.g., Disease, Target, Drug) and standard identifiers (MONDO, Ensembl, ChEMBL).
+2. **Edge Construction:** We map the source and destination identifiers from our API results into the standardized `node_id` space. We define distinct relation types:
+   * `disease_associates_target` (from Open Targets)
+   * `target_interacts_target` (from STRING)
+   * `drug_inhibits_target` (from ChEMBL)
+3. **Weight Integration:** The association scores from Open Targets and STRING interaction scores are normalized and assigned as edge weights.
+
+### Python Code Snippet for Merging
+```python
+import pandas as pd
+
+# 1. Load Extracted Data
+targets = pd.read_csv('data/raw/opentargets_nsclc_targets.csv')
+ppi = pd.read_csv('data/raw/string_ppi.csv')
+drugs = pd.read_csv('data/raw/chembl_drugs.csv')
+
+# 2. Build Nodes DataFrame (Assigning unique IDs)
+diseases = pd.DataFrame({'entity_id': ['MONDO_0005233'], 'type': ['Disease']})
+proteins = pd.DataFrame({'entity_id': targets['uniprot_id'].dropna().unique(), 
+                         'type': ['Target'] * targets['uniprot_id'].dropna().nunique()})
+chemicals = pd.DataFrame({'entity_id': drugs['chembl_molecule_id'].unique(), 
+                          'type': ['Drug'] * drugs['chembl_molecule_id'].nunique()})
+
+nodes = pd.concat([diseases, proteins, chemicals], ignore_index=True)
+nodes['node_id'] = nodes.index # Critical for PyTorch Geometric (PyG)
+nodes.to_csv('data/processed/nodes.csv', index=False)
+
+# 3. Build Edges DataFrame
+# Create a fast lookup dictionary to convert entity strings to PyG integer IDs
+node_mapping = dict(zip(nodes['entity_id'], nodes['node_id']))
+
+drug_edges = drugs.copy()
+drug_edges['src_id'] = drug_edges['chembl_molecule_id'].map(node_mapping)
+drug_edges['dst_id'] = drug_edges['uniprot_id'].map(node_mapping)
+drug_edges['relation'] = 'drug_targets_protein'
+
+edges = drug_edges[['src_id', 'dst_id', 'relation']]
+edges.to_csv('data/processed/edges.csv', index=False)
+```
 
 ## Comprehensive Literature Review
 
