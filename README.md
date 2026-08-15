@@ -26,7 +26,7 @@ The primary objective of this research is to design, implement, and evaluate an 
 3. Extract Explainable Biological Pathways via XAI: Integrate path-based XAI algorithms to extract human-readable molecular traversal paths ensuring full mechanistic transparency.
 4. Deliver a Clinical Decision-Support System: Benchmark predicted candidates against drug-response data and published literature.
 
-Novelty: The inclusion of localized somatic mutation data from the Bangladeshi demographic re-weights the graph edges, effectively breaking the Western-centric geographical bias in current precision oncology models.
+**Novelty:** The inclusion of localized somatic mutation data from the Bangladeshi demographic re-weights the graph edges, effectively breaking the Western-centric geographical bias in current precision oncology models.
 
 ## Proposed Methodology & Pipeline
 
@@ -45,105 +45,136 @@ Traversing the graph topology to extract human-readable molecular paths that med
 Step 5: Rigorous Validation
 Benchmarking performance using AUROC/AUPRC metrics, performing ablation studies, and cross-validating predictions with ClinicalTrials.gov and PubMed literature.
 
-## Public Datasets: What, Why, and How?
+## Curated Public Dataset Architecture
 
-To ensure high model fidelity without compromising reproducibility, we utilize several underexplored and highly robust public datasets. All processing is strictly performed via Kaggle environments to eliminate local computational bottlenecks.
+### 1. Research Data Strategy
+To achieve strong peer-review rigor in our final-year research, our system does not depend on a single cancer dataset. Instead, our framework integrates multiple complementary biomedical resources covering patient-level clinical information, somatic mutations, drug-target relationships, protein-protein interactions, biological pathways, gene-disease relationships, drug-response evidence, safety signals, and normal lung-tissue biological context. 
+Every dataset must contribute a specific node type, edge type, feature, validation signal, or biological constraint to construct a heterogeneous biomedical knowledge graph rather than a simple merged table.
 
-### 1. Open Targets Platform (Gene-Disease Associations)
-* **What it is:** A comprehensive biomedical platform mapping genes to diseases.
-* **Why we use it:** Open Targets provides the most rigorously curated genetic associations specifically for Non-Small Cell Lung Carcinoma (MONDO:0005233). It actively integrates multi-omics evidence (RNA-seq, genetics, animal models), making it superior to older, static databases.
-* **How we use it:** We query the GraphQL API to extract the top NSCLC-associated targets along with their statistical association scores.
+### 2. Core Dataset Implementation
+Our implementation begins with the following core dataset tiers:
 
-Python Code Snippet for Extraction:
-```python
-import requests
-query = """
-query {
-  disease(efoId: "MONDO_0005233") {
-    associatedTargets(page: {index: 0, size: 500}) {
-      rows { target { id approvedSymbol } score }
-    }
-  }
-}
-"""
-url = "https://api.platform.opentargets.org/api/v4/graphql"
-response = requests.post(url, json={"query": query})
+**Tier 1: Mandatory**
+* Our Bangladeshi Primary Clinical-Genomic Dataset
+* Open Targets
+* STRING
+* Reactome
+* GDC/TCGA-LUAD & TCGA-LUSC
+* DrugCentral
+* DrugMechDB
+* GDSC
+* DepMap
+* FDA FAERS
+* DailyMed
+
+**Tier 2: Strongly Recommended**
+* AACR Project GENIE
+* PRISM
+* ClinVar
+* UniProt
+* Gene Ontology
+* GTEx Lung
+
+**Tier 3: Conditional**
+* OncoKB (Requires API Token registration)
+* DrugBank & SIDER (Included conditionally depending on updated data accessibility)
+
+### 3. Detailed Dataset Roles & Rationale
+
+**Open Targets Platform**
+* **Role:** Therapeutic knowledge, target-disease associations, and evidence scores.
+* **Usage:** Provides our framework an evidence-scored aggregation to connect Drug -> Target, Target -> Disease, and Gene -> Disease. We retain original evidence scores instead of binary 0/1 relationships to distinguish between high, moderate, and low-confidence associations.
+
+**STRING**
+* **Role:** Biological network and protein-protein interactions (PPI).
+* **Usage:** Provides multi-hop reasoning (Patient -> EGFR -> signaling protein -> pathway -> disease process). We restrict the network to human interactions relevant to lung cancer using a stringent combined_score >= 700 threshold.
+
+**Reactome**
+* **Role:** Mechanistic pathway layer.
+* **Usage:** Provides biological interpretability for Explainable AI (XAI) predictions. Connects Gene/Protein -> participates_in -> Pathway.
+
+**DrugMechDB**
+* **Role:** XAI validation through curated drug-disease mechanistic paths.
+* **Usage:** Serves as a reference set against which our generated explanation paths (e.g., Drug -> Target -> Biological Process -> Disease) can be evaluated.
+
+**GDC / TCGA (LUAD & LUSC)**
+* **Role:** Genomic reference, external validation, and high-quality comparative cohort.
+* **Usage:** Integrated with our primary Bangladeshi lung-cancer cohort and multi-layer therapeutic knowledge graph as a high-quality reference cohort to establish baseline lung-cancer molecular landscapes.
+
+**AACR Project GENIE**
+* **Role:** Real-world clinical genomic sequencing data for external validation.
+* **Usage:** Complements TCGA by representing a different type of clinical genomic cohort, enabling robustness testing across real-world mutation frequency patterns.
+
+**DepMap & GDSC (Genomics of Drug Sensitivity in Cancer)**
+* **Role:** Functional and drug efficacy validation.
+* **Usage:** Demonstrates whether specific cancer-cell populations display biological sensitivity to candidate drugs using calculated values like IC50, AUC, and CRISPR dependencies.
+
+**PRISM Repurposing**
+* **Role:** Independent efficacy validation.
+* **Usage:** Provides an independent drug-response dataset to cross-validate GDSC findings, establishing stronger validation than relying on a single experimental resource.
+
+**DrugCentral**
+* **Role:** Drug knowledge, targets, structures, and FDA/EMA approvals.
+* **Usage:** Standardizes drug identities, establishes drug-target edges, and defines the approved therapeutic compound candidate space.
+
+**FDA FAERS & DailyMed**
+* **Role:** Post-marketing safety signals and regulatory safety.
+* **Usage:** Used as a safety signal source to calculate frequency of adverse events, label warnings, and contraindications. This creates a safety-aware ranking system for our candidate drugs.
+
+**ClinVar & OncoKB**
+* **Role:** Variant clinical significance and precision-oncology validation.
+* **Usage:** ClinVar distinguishes pathogenic from benign variants, while OncoKB provides expert-curated clinical actionability (requiring API authorization).
+
+**Gene Ontology, UniProt, & GTEx**
+* **Role:** Functional annotation, identifier bridge, and normal-tissue context.
+* **Usage:** GO enriches the biological interpretation layer; UniProt maps various identifiers (Ensembl, HGNC, ChEMBL); GTEx allows our model to distinguish between cancer-associated biological activity and normal lung tissue expression.
+
+**Primary Bangladeshi Clinical-Genomic Dataset**
+* **Role:** Population-specific personalization (Clinical, genomic, and treatment information).
+* **Usage:** Provides patient demographics, clinical diagnostics (TNM stage, tumor grade), treatment history, and genomic features (VAF, coverage/depth). This transforms the global knowledge graph into a localized, personalized framework. Identifiable information is strictly anonymized (e.g., Patient_001).
+
+## Universal Identifier Strategy
+
+Our pipeline preserves original identifiers and generates a central mapping table to prevent data corruption during integration:
+
+* **Drug:** Primary identifier is ChEMBL ID, supplemented by DrugCentral ID, PubChem CID, and InChIKey.
+* **Gene:** Primary computational identifier is Ensembl Gene ID; human-readable identifier is HGNC Gene Symbol.
+* **Protein:** Primary identifier is UniProt accession.
+* **Disease:** Standardized ontology identifiers such as MONDO or EFO.
+* **Variant:** Genome build, chromosome, position, reference/alternate allele, and HGVS notation.
+
+## Core Knowledge Graph Structure
+
+Our heterogeneous graph contains the following core entity types and hierarchical relationships:
+
+```text
+Patient -> [harbors] -> Variant
+Variant -> [affects] -> Gene
+Gene -> [encodes] -> Protein
+Protein -> [interacts_with] -> Protein
+Protein -> [participates_in] -> Pathway
+Pathway -> [associated_with] -> Disease
+Drug -> [targets] -> Protein
+Drug -> [has_response_in] -> Cancer Cell Line -> [has_molecular_profile] -> Gene
+Drug -> [associated_with] -> Adverse Event
+Variant -> [clinically_interpreted_by] -> ClinVar / OncoKB
 ```
 
-### 2. STRING API (Protein-Protein Interactions)
-* **What it is:** A database of known and predicted protein-protein interactions.
-* **Why we use it:** Rather than downloading a generic 50GB file containing all human proteins, we use the API to dynamically fetch interactions specific only to our identified NSCLC targets. This ensures our graph is focused and computationally efficient.
-* **How we use it:** We map the Open Targets genes to UniProt IDs, then query the STRING v12 API to establish structural and functional interaction edges (`target_interacts_target`).
+## Drug Prediction Process
 
-Python Code Snippet for Extraction:
-```python
-import requests
-url = "https://version-12-0.string-db.org/api/json/network"
-params = {"identifiers": "TP53%0dEGFR", "species": 9606} # 9606 = Human
-response = requests.post(url, data=params)
-```
+Our system performs multi-stage predictions rather than deriving simple direct correlations:
 
-### 3. ChEMBL API (Drug-Target Interactions)
-* **What it is:** An open-access database of bioactive molecules with drug-like properties.
-* **Why we use it:** ChEMBL provides rich pharmacological bioactivity data (IC50, Kd, Ki), which is highly underexplored in standard baseline GNNs that typically rely on basic DrugBank extracts. 
-* **How we use it:** We query the ChEMBL API mechanism endpoint to extract approved and experimental drugs that bind to our NSCLC target proteins, creating `drug_targets_protein` edges.
+1. **Patient Molecular Profiling:** Constructing a personalized subgraph from clinical characteristics, subtype, and somatic mutations (VAF).
+2. **Mutation Prioritization:** Evaluating mutation characteristics using VAF, ClinVar, OncoKB, and functional dependency.
+3. **Biological Network Expansion:** Connecting high-priority genes through STRING, UniProt, Reactome, and Gene Ontology.
+4. **Drug Candidate Generation:** Deriving candidate drugs via Open Targets, DrugCentral, and DrugMechDB relationships.
+5. **Experimental Evidence Filtering:** Cross-checking candidate drugs against GDSC, PRISM, and DepMap sensitivity metrics.
+6. **Safety Filtering:** Penalizing dangerous candidates using FAERS and DailyMed adverse-event data.
+7. **Mechanistic Explanation:** Extracting biologically meaningful paths (e.g., Patient Mutation -> Gene -> Protein -> Pathway -> Drug Target -> Drug) via our XAI module.
+8. **Final Ranking:** Calculating the final priority experimentally: `Final Score = Biological Relevance + Clinical Evidence + Drug Response Evidence + Mechanistic Evidence - Safety Risk`.
 
-Python Code Snippet for Extraction:
-```python
-import requests
-url = "https://www.ebi.ac.uk/chembl/api/data/mechanism?target_component__accession=P00533&format=json"
-res = requests.get(url)
-```
-
-### 4. Primary Dataset (Bangladeshi Patient Cohort)
-* **What it is:** A proprietary clinical dataset featuring somatic mutation profiles from Bangladeshi lung cancer patients.
-* **Why we use it:** This dataset injects crucial geographic localization into the global graph. The Variant Allele Frequencies (VAF) from these patients will dynamically scale the edge weights in our GNN, achieving true personalization.
-* **How we use it:** The VAF scores are mapped onto the `target_associates_disease` edges to re-weight the global graph into a patient-specific graph. *(Note: Due to ethical constraints, raw patient data is not publicly shared in this repository.)*
-
-## 🔗 Data Merging & Graph Construction
-
-To train our R-GCN, the isolated datasets fetched above must be unified into a single, cohesive Heterogeneous Knowledge Graph represented by `nodes.csv` and `edges.csv`.
-
-### Step-by-Step Merging Logic
-1. **Node Standardization:** We extract all unique entities (Diseases, Targets, Drugs) across all 3 datasets. We assign a unique continuous integer `node_id` to every entity. We track the `node_type` (e.g., Disease, Target, Drug) and standard identifiers (MONDO, Ensembl, ChEMBL).
-2. **Edge Construction:** We map the source and destination identifiers from our API results into the standardized `node_id` space. We define distinct relation types:
-   * `disease_associates_target` (from Open Targets)
-   * `target_interacts_target` (from STRING)
-   * `drug_inhibits_target` (from ChEMBL)
-3. **Weight Integration:** The association scores from Open Targets and STRING interaction scores are normalized and assigned as edge weights.
-
-### Python Code Snippet for Merging
-```python
-import pandas as pd
-
-# 1. Load Extracted Data
-targets = pd.read_csv('data/raw/opentargets_nsclc_targets.csv')
-ppi = pd.read_csv('data/raw/string_ppi.csv')
-drugs = pd.read_csv('data/raw/chembl_drugs.csv')
-
-# 2. Build Nodes DataFrame (Assigning unique IDs)
-diseases = pd.DataFrame({'entity_id': ['MONDO_0005233'], 'type': ['Disease']})
-proteins = pd.DataFrame({'entity_id': targets['uniprot_id'].dropna().unique(), 
-                         'type': ['Target'] * targets['uniprot_id'].dropna().nunique()})
-chemicals = pd.DataFrame({'entity_id': drugs['chembl_molecule_id'].unique(), 
-                          'type': ['Drug'] * drugs['chembl_molecule_id'].nunique()})
-
-nodes = pd.concat([diseases, proteins, chemicals], ignore_index=True)
-nodes['node_id'] = nodes.index # Critical for PyTorch Geometric (PyG)
-nodes.to_csv('data/processed/nodes.csv', index=False)
-
-# 3. Build Edges DataFrame
-# Create a fast lookup dictionary to convert entity strings to PyG integer IDs
-node_mapping = dict(zip(nodes['entity_id'], nodes['node_id']))
-
-drug_edges = drugs.copy()
-drug_edges['src_id'] = drug_edges['chembl_molecule_id'].map(node_mapping)
-drug_edges['dst_id'] = drug_edges['uniprot_id'].map(node_mapping)
-drug_edges['relation'] = 'drug_targets_protein'
-
-edges = drug_edges[['src_id', 'dst_id', 'relation']]
-edges.to_csv('data/processed/edges.csv', index=False)
-```
+## Reproducibility Requirements
+For every dataset used, our repository will maintain an exact metadata tracking file. This includes provider, exact download URL, version/release date, SHA-256 hash, processing steps, filtering criteria, and final number of records. We firmly document exact processing steps rather than generic dataset citations.
 
 ## Comprehensive Literature Review
 
@@ -162,7 +193,7 @@ edges.to_csv('data/processed/edges.csv', index=False)
 | Wu et al. (2025) [11] | Multicenter NSCLC Cohort | Integrated ML Survival Framework | Focuses strictly on machine learning survival modeling; lacks explicit XAI graph path extraction. |
 
 ## Copyright and Uniqueness
-This repository and the architectural concepts within are designed strictly to prevent plagiarism. The integration of localized VAF data with graph edge re-weighting in an R-GCN space is a novel approach completely unique to this research. All code is originally authored and copyright free.
+This repository and the architectural concepts within are designed strictly to prevent plagiarism. The integration of localized VAF data with graph edge re-weighting in an R-GCN space is a novel approach completely unique to this research. Our framework integrates population-specific patient genomics with a heterogeneous, evidence-weighted biomedical knowledge graph and independently validates drug-repurposing candidates using mechanistic, functional, pharmacological, clinical-actionability, and safety evidence. All code is originally authored and copyright free.
 
 ## References
 [1] Y. Ryu, H.-E. Jeong, and J.-Y. An, "IDAP: An integrated literature- and knowledge-graph-driven evidence prioritization pipeline for precision oncology," Bioinformatics, vol. 42, 2026.
