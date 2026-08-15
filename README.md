@@ -97,22 +97,32 @@ Why we use it: This proprietary dataset injects localization into the global gra
 
 ## Comprehensive Literature Review
 
-| Author & Reference | Dataset Used | Dataset Format | Model / Algorithm Used | Accuracy / Performance | Key Limitations |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| Ryu et al. (2026) | OncoKB, PubMed, TxGNN KG | Tabular, Graph Triples | Rule-based Heuristic Pipeline (IDAP) | Recovered matched therapy in 28/41 samples | Relies on co-mention (non-causal); lacks deep XAI path extraction. |
-| Perdomo-Quinteiro et al. (2026) | NeDRex KG, DrugMechDB | Heterogeneous Graph | Heterogeneous GraphSAGE + XAIPath | AUROC > 0.95, Hits@1 = 0.71 | Simple path evaluation exponentially increases computation time; relies on existing KG without patient multi-omics. |
-| Khodadadi AghGhaleh et al. (2026) | RepoDB, SIDER, STRING | Directed Multigraph | Word2Vec + Dual-Channel 1D-CNN | AUC-ROC = 0.9836, F1 = 0.9074 | Lacks an XAI module for human-readable biological pathway extraction. |
-| Li & Xie (2026) | TCGA, NCG, COSMIC | Pan-cancer Multi-omics | MNDGNN (Multiplex Directed GNN) | AUROC = 0.8780, F1 = 0.8238 | Identifies driver genes rather than drug repurposing candidates. |
-| Gonzalez-Cavazos et al. (2026)| MIND KG, DrugMechDB | Heterogeneous KG | DBR-X (Case-Based Reasoning + R-GCN) | MRR = 0.3770, Hits@1 = 0.2796 | Similarity retrieval relies on simple inner products; lacks localized genomic profiling. |
-| Islam et al. (2023) | NICRH Hospital Registry | Clinical Records | Statistical Survival Analysis | Characterized demographic differentials | Observational clinical dataset; lacks AI/GNN integration. |
+| Author & Reference | Dataset Used | Model / Algorithm Used | Key Limitations Identified |
+| :--- | :--- | :--- | :--- |
+| Ryu et al. (2026) [1] | OncoKB, PubMed, TxGNN KG, CPTAC | Rule-based Heuristic Prioritization (IDAP) | Relies on non-causal co-mentions; heuristic scores sensitive to weights; lacks deep XAI path extraction. |
+| Perdomo-Quinteiro et al. (2026) [2] | NeDRex KG, DrugMechDB | Heterogeneous GraphSAGE + XAIPath | Path evaluation increases computation time exponentially; lacks patient-level multi-omics. |
+| Khodadadi AghGhaleh et al. (2026) [3] | RepoDB, SIDER, STRING, DisGeNET | Word2Vec + Dual-Channel 1D-CNN | Relies on trial-and-error grid search; lacks an XAI module for human-readable pathway extraction. |
+| Li & Xie (2026) [4] | TCGA, NCG, COSMIC, PPI | MNDGNN (Multiplex Directed GNN) | Identifies driver genes rather than drug repurposing candidates; noisy multiplex edges affect performance. |
+| Gonzalez-Cavazos et al. (2026) [5] | MIND KG, DrugMechDB | DBR-X (Case-Based Reasoning + R-GCN) | Similarity retrieval relies on simple inner products; completely lacks localized genomic profiling. |
+| Islam et al. (2023) [6] | NICRH Hospital Registry (Bangladesh) | Statistical Survival Analysis | Purely observational clinical dataset; lacks AI/GNN computational modeling or drug repurposing integration. |
+| Aamer et al. (2026) [7] | PrimeKG, FDA Approvals | COMIC (Contrastive Masking) | Performance degrades on sparse graphs; DDI congestion obscures actual mechanistic paths. |
+| Abo-Dahab et al. (2026) [8] | ChEMBL 36 | TransR, ComplEx, Heterogeneous GNN | Transductive setup limits performance on unobserved cold-start entities without topological context. |
+| Xiong et al. (2025) [9] | BioSNAP, DrugBank, BindingDB | Geometric GNN (GPS-DTI) with CAM | Focuses solely on paired binding affinity rather than complex multi-layered patient Knowledge Graphs. |
+| Khan et al. (2025) [10] | DrugBank, RCSB PDB | Molecular Docking & MD Simulations | Purely structural in silico approach; lacks population-specific patient multi-omics or GNN link prediction. |
+| Wu et al. (2025) [11] | Multicenter NSCLC Cohort | Integrated ML Survival Framework | Focuses strictly on machine learning survival modeling; lacks explicit XAI graph path extraction. |
 
 ## Copyright and Uniqueness
 This repository and the architectural concepts within are designed strictly to prevent plagiarism. The integration of localized VAF data with graph edge re-weighting in an R-GCN space is a novel approach completely unique to this research. All code is originally authored and copyright free.
 
 ## References
-[1] Y. Ryu, H.-E. Jeong, and J.-Y. An, "IDAP: An integrated literature- and knowledge-graph-driven evidence prioritization pipeline for precision oncology," Bioinformatics, vol. 42, no. 5, art. no. btag300, 2026.
-[2] P. Perdomo-Quinteiro, E. Guney, and A. Belmonte-Hernández, "Generating explainable hypotheses for drug repurposing with graph neural networks," Sci. Rep., vol. 16, p. 18840, 2026.
-[3] M. Khodadadi AghGhaleh et al., "ConvAHKG: Action-based hybrid knowledge graph with a dual-channel convolutional approach for drug repurposing," Sci. Rep., vol. 16, p. 7592, 2026.
-[4] P. Li and M. Xie, "Multiplex networks-based directed graph neural networks for cancer driver gene identification," PLOS Comput. Biol., vol. 22, no. 5, p. e1014275, 2026.
-[5] A. C. Gonzalez-Cavazos, R. Tu, M. Sinha, and A. I. Su, "A case-based explainable graph neural network framework for mechanistic drug repositioning," Bioinformatics, vol. 42, no. 2, art. no. btag008, 2026.
-[6] M. R. Islam et al., "Lung cancer in Bangladesh," J. Thorac. Oncol., vol. 18, no. 8, pp. 972–980, 2023.
+[1] Y. Ryu, H.-E. Jeong, and J.-Y. An, "IDAP: An integrated literature- and knowledge-graph-driven evidence prioritization pipeline for precision oncology," Bioinformatics, vol. 42, 2026.
+[2] P. Perdomo-Quinteiro, E. Guney, and A. Belmonte-Hernández, "Generating explainable hypotheses for drug repurposing with graph neural networks," Sci. Rep., vol. 16, 2026.
+[3] M. Khodadadi AghGhaleh et al., "ConvAHKG: Action-based hybrid knowledge graph with a dual-channel convolutional approach for drug repurposing," Sci. Rep., vol. 16, 2026.
+[4] P. Li and M. Xie, "Multiplex networks-based directed graph neural networks for cancer driver gene identification," PLOS Comput. Biol., vol. 22, 2026.
+[5] A. C. Gonzalez-Cavazos, R. Tu, M. Sinha, and A. I. Su, "A case-based explainable graph neural network framework for mechanistic drug repositioning," Bioinformatics, vol. 42, 2026.
+[6] M. R. Islam et al., "Lung cancer in Bangladesh," J. Thorac. Oncol., vol. 18, pp. 972–980, 2023.
+[7] N. Aamer, M. N. Asim, and A. Dengel, "COMIC: Explainable drug repurposing via contrastive masking for interpretable connections," BMC Bioinformatics, vol. 27, 2026.
+[8] Y. Abo-Dahab, R. Hernández, and I. C. Arechiga Durán, "Pharmacology knowledge graphs enable drug repurposing without chemical structure information," Discov. Artif. Intell., vol. 6, 2026.
+[9] A. Xiong et al., "An interpretable geometric graph neural network for enhancing the generalizability of drug-target interaction prediction," BMC Biol., vol. 23, 2025.
+[10] M. S. Khan, A. Shamsi, A. Zuberi, and M. Shahwan, "In silico repurposing of FDA-approved drugs against MEK1: Structural and dynamic insights into lung cancer therapeutics," Front. Pharmacol., vol. 16, 2025.
+[11] X. Wu et al., "Integrated machine learning survival framework for consensus modeling in a large multicenter cohort of NSCLC resistant to aumolertinib," Sci. Rep., vol. 15, 2025.
