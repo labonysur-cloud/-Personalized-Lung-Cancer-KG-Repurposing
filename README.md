@@ -30,20 +30,47 @@ The primary objective of this research is to design, implement, and evaluate an 
 
 ## Proposed Methodology & Pipeline
 
-Step 1: Data Localization & KG Construction
-Filtering global biomedical data alongside primary Bangladeshi clinical/somatic mutation profiles (MAF/VAF data) to construct standardized graph entities.
+```text
+  [ Global Biomedical Data ]                [ Primary Bangladeshi Patient Data ]
+              \                                          /
+               \                                        /
+                v                                      v
+    +-------------------------------------------------------------+
+    |           STEP 1: Data Localization & KG Construction       |
+    |  (Nodes: Patient, Gene, Protein, Disease, Drug, Pathway)    |
+    +-----------------------------+-------------------------------+
+                                  |
+                                  v
+    +-----------------------------+-------------------------------+
+    |           STEP 2: R-GCN Model Pre-training                  |
+    |  (Learning Heterogeneous Graph Embeddings & Link Prediction)|
+    +-----------------------------+-------------------------------+
+                                  |
+                                  v
+    +-----------------------------+-------------------------------+
+    |           STEP 3: Patient Personalization & Fine-Tuning     |
+    |  (Dynamic Edge Re-weighting via VAF & Genomic Profiles)     |
+    +-----------------------------+-------------------------------+
+                                  |
+                                  v
+    +-----------------------------+-------------------------------+
+    |           STEP 4: Mechanistic XAI Extraction                |
+    |  (Extracting Human-Readable Molecular Traversal Paths)      |
+    +-----------------------------+-------------------------------+
+                                  |
+                                  v
+    +-----------------------------+-------------------------------+
+    |           STEP 5: Rigorous Validation & Scoring             |
+    |  (Benchmarking vs GDSC, PRISM, FAERS, and Clinical Data)    |
+    +-------------------------------------------------------------+
+```
 
-Step 2: R-GCN Model Pre-training
-Training R-GCN models on the global knowledge graph to capture complex non-linear topological interactions via link prediction.
-
-Step 3: Patient Personalization & Fine-Tuning
-Dynamically reweighting graph edge weights using patient-specific Variant Allele Frequency (VAF) scores to adapt predictions for individual genomic profiles.
-
-Step 4: Mechanistic XAI Extraction
-Traversing the graph topology to extract human-readable molecular paths that medically justify every prioritized drug candidate.
-
-Step 5: Rigorous Validation
-Benchmarking performance using AUROC/AUPRC metrics, performing ablation studies, and cross-validating predictions with ClinicalTrials.gov and PubMed literature.
+**Detailed Pipeline Descriptions:**
+* **Step 1:** Filtering global biomedical data alongside primary Bangladeshi clinical/somatic mutation profiles (MAF/VAF data) to construct standardized graph entities.
+* **Step 2:** Training R-GCN models on the global knowledge graph to capture complex non-linear topological interactions via link prediction.
+* **Step 3:** Dynamically reweighting graph edge weights using patient-specific Variant Allele Frequency (VAF) scores to adapt predictions for individual genomic profiles.
+* **Step 4:** Traversing the graph topology to extract human-readable molecular paths that medically justify every prioritized drug candidate.
+* **Step 5:** Benchmarking performance using AUROC/AUPRC metrics, performing ablation studies, and cross-validating predictions with independent drug-response data and literature.
 
 ## Curated Public Dataset Architecture
 
