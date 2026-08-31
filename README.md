@@ -16,13 +16,13 @@
 ## Abstract
 Lung cancer remains one of the most prominent health challenges in Bangladesh, marked by high mortality rates and limited clinical access to targeted precision therapies. Traditional de novo drug discovery is an extraordinarily slow and expensive process. While computational drug repurposing offers a cost-effective alternative, current AI-driven models suffer from two major barriers: Geographical/Genomic Bias (relying almost exclusively on Western cohorts) and the Black Box Problem (lacking transparent biological reasoning for clinicians). 
 
-This repository implements a localized, heterogeneous biomedical knowledge graph coupled with Graph Neural Networks (R-GCN) and path-based Explainable AI (XAI) to perform personalized drug repurposing specifically tailored for Bangladeshi non-small cell lung cancer (NSCLC) patients. The entire framework ensures strict reproducibility and uniqueness, operating on robust in-silico validation.
+This repository implements a localized, heterogeneous biomedical knowledge graph coupled with Graph Neural Networks (Heterogeneous GraphSAGE) and path-based Explainable AI (XAI) to perform personalized drug repurposing specifically tailored for Bangladeshi non-small cell lung cancer (NSCLC) patients. The entire framework ensures strict reproducibility and uniqueness, operating on robust in-silico validation.
 
 ## Research Objectives & Novelty
 The primary objective of this research is to design, implement, and evaluate an explainable AI (XAI) framework based on a heterogeneous biomedical knowledge graph to identify personalized, repurposed drug candidates.
 
 1. Construct a Localized Biomedical Knowledge Graph: Aggregate primary clinical and somatic mutation profiles from Bangladeshi patients, integrating them with global repositories.
-2. Implement GNNs for Link Prediction: Develop Relational Graph Convolutional Networks (R-GCNs) to learn low-dimensional graph embeddings and predict high-affinity drug-disease associations.
+2. Implement GNNs for Link Prediction: Develop Heterogeneous GraphSAGE to learn low-dimensional graph embeddings and predict high-affinity drug-disease associations.
 3. Extract Explainable Biological Pathways via XAI: Integrate path-based XAI algorithms to extract human-readable molecular traversal paths ensuring full mechanistic transparency.
 4. Deliver a Clinical Decision-Support System: Benchmark predicted candidates against drug-response data and published literature.
 
@@ -42,7 +42,7 @@ The primary objective of this research is to design, implement, and evaluate an 
                                   |
                                   v
     +-----------------------------+-------------------------------+
-    |           STEP 2: R-GCN Model Pre-training                  |
+    |           STEP 2: Heterogeneous GraphSAGE Model Pre-training                  |
     |  (Learning Heterogeneous Graph Embeddings & Link Prediction)|
     +-----------------------------+-------------------------------+
                                   |
@@ -67,7 +67,7 @@ The primary objective of this research is to design, implement, and evaluate an 
 
 **Detailed Pipeline Descriptions:**
 * **Step 1:** Filtering global biomedical data alongside primary Bangladeshi clinical/somatic mutation profiles (MAF/VAF data) to construct standardized graph entities.
-* **Step 2:** Training R-GCN models on the global knowledge graph to capture complex non-linear topological interactions via link prediction.
+* **Step 2:** Training Heterogeneous GraphSAGE models on the global knowledge graph to capture complex non-linear topological interactions via link prediction.
 * **Step 3:** Dynamically reweighting graph edge weights using patient-specific Variant Allele Frequency (VAF) scores to adapt predictions for individual genomic profiles.
 * **Step 4:** Traversing the graph topology to extract human-readable molecular paths that medically justify every prioritized drug candidate.
 * **Step 5:** Benchmarking performance using AUROC/AUPRC metrics, performing ablation studies, and cross-validating predictions with independent drug-response data and literature.
@@ -211,7 +211,7 @@ For every dataset used, our repository will maintain an exact metadata tracking 
 | Perdomo-Quinteiro et al. (2026) [2] | NeDRex KG, DrugMechDB | Heterogeneous GraphSAGE + XAIPath | Path evaluation increases computation time exponentially; lacks patient-level multi-omics. |
 | Khodadadi AghGhaleh et al. (2026) [3] | RepoDB, SIDER, STRING, DisGeNET | Word2Vec + Dual-Channel 1D-CNN | Relies on trial-and-error grid search; lacks an XAI module for human-readable pathway extraction. |
 | Li & Xie (2026) [4] | TCGA, NCG, COSMIC, PPI | MNDGNN (Multiplex Directed GNN) | Identifies driver genes rather than drug repurposing candidates; noisy multiplex edges affect performance. |
-| Gonzalez-Cavazos et al. (2026) [5] | MIND KG, DrugMechDB | DBR-X (Case-Based Reasoning + R-GCN) | Similarity retrieval relies on simple inner products; completely lacks localized genomic profiling. |
+| Gonzalez-Cavazos et al. (2026) [5] | MIND KG, DrugMechDB | DBR-X (Case-Based Reasoning + Heterogeneous GraphSAGE) | Similarity retrieval relies on simple inner products; completely lacks localized genomic profiling. |
 | Islam et al. (2023) [6] | NICRH Hospital Registry (Bangladesh) | Statistical Survival Analysis | Purely observational clinical dataset; lacks AI/GNN computational modeling or drug repurposing integration. |
 | Aamer et al. (2026) [7] | PrimeKG, FDA Approvals | COMIC (Contrastive Masking) | Performance degrades on sparse graphs; DDI congestion obscures actual mechanistic paths. |
 | Abo-Dahab et al. (2026) [8] | ChEMBL 36 | TransR, ComplEx, Heterogeneous GNN | Transductive setup limits performance on unobserved cold-start entities without topological context. |
@@ -220,7 +220,7 @@ For every dataset used, our repository will maintain an exact metadata tracking 
 | Wu et al. (2025) [11] | Multicenter NSCLC Cohort | Integrated ML Survival Framework | Focuses strictly on machine learning survival modeling; lacks explicit XAI graph path extraction. |
 
 ## Copyright and Uniqueness
-This repository and the architectural concepts within are designed strictly to prevent plagiarism. The integration of localized VAF data with graph edge re-weighting in an R-GCN space is a novel approach completely unique to this research. Our framework integrates population-specific patient genomics with a heterogeneous, evidence-weighted biomedical knowledge graph and independently validates drug-repurposing candidates using mechanistic, functional, pharmacological, clinical-actionability, and safety evidence. All code is originally authored and copyright free.
+This repository and the architectural concepts within are designed strictly to prevent plagiarism. The integration of localized VAF data with graph edge re-weighting in an Heterogeneous GraphSAGE space is a novel approach completely unique to this research. Our framework integrates population-specific patient genomics with a heterogeneous, evidence-weighted biomedical knowledge graph and independently validates drug-repurposing candidates using mechanistic, functional, pharmacological, clinical-actionability, and safety evidence. All code is originally authored and copyright free.
 
 ## References
 [1] Y. Ryu, H.-E. Jeong, and J.-Y. An, "IDAP: An integrated literature- and knowledge-graph-driven evidence prioritization pipeline for precision oncology," Bioinformatics, vol. 42, 2026.
