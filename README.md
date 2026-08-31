@@ -203,6 +203,33 @@ Our system performs multi-stage predictions rather than deriving simple direct c
 ## Reproducibility Requirements
 For every dataset used, our repository will maintain an exact metadata tracking file. This includes provider, exact download URL, version/release date, SHA-256 hash, processing steps, filtering criteria, and final number of records. We firmly document exact processing steps rather than generic dataset citations.
 
+
+## Reproducibility Guidelines (Code Execution)
+To ensure open-science compliance and strict reproducibility, follow these step-by-step instructions to replicate the entire study:
+
+### Step 1: Environment Setup
+1. Ensure Python 3.9+ is installed.
+2. Install all required dependencies using the provided requirements file:
+   \\ash
+   pip install -r requirements.txt
+   \
+### Step 2: Data Preprocessing & KG Construction
+Execute **Notebook 1** (\src/data_processing/BGLC_KG_Data_Pipeline.ipynb\).
+* **What it does:** Fetches raw data from 17 live biomedical APIs, canonicalizes identifiers, and constructs the \HeteroData\ Knowledge Graph.
+* **Outputs:** 
+  - \graph/BGLC-KG-split.pt\ (The graph tensor with train/val/test masks).
+  - \igures/metagraph_schema_final.pdf\ (KG Schema).
+  - EDA Distribution Plots (Population AF, Clinical Phases, PPI Subgraphs).
+
+### Step 3: Model Training & Novel Drug Prediction
+Execute **Notebook 2** (\src/models/BGLC_KG_Model_Training.ipynb\).
+* **What it does:** Loads the graph, trains the Heterogeneous GraphSAGE model, executes SOTA KGE Benchmarking (TransE, RotatE, etc.), and predicts novel drug repurposing candidates.
+* **Outputs:**
+  - \models/top_novel_candidates.csv\ (Full prediction rankings).
+  - \isualizations/model_performance_evaluation.png\ (ROC, PR, Loss graphs).
+  - \isualizations/drug_mapping_top200.png\ (Top 200 Drug Heatmap).
+  - \isualizations/realtime_kg_connection_rank_X.png\ (Top 100 Drug Subgraphs for XAI).
+
 ## Comprehensive Literature Review
 
 | Author & Reference | Dataset Used | Model / Algorithm Used | Key Limitations Identified |
