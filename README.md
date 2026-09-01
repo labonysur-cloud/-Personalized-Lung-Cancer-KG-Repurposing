@@ -1,18 +1,5 @@
 # An Explainable Knowledge Graph-Based Framework for Personalized Drug Repurposing for Bangladeshi Lung Cancer Patients
 
-```text
-         [ Genomic Data ]            |         [ Clinical Target ]
-                                     |
-            \      /                 |              ____    ____
-           - \    / -                |             /    \  /    \
-              \  /                   |            |      ||      |
-               \/                    |            |  ||  ||  ||  |
-               /\                    |            |  ||  ||  ||  |
-              /  \                   |            |      ||      |
-           - /    \ -                |             \____/  \____/
-            /      \                 |
-```
-
 ## Abstract
 Lung cancer remains one of the most prominent health challenges in Bangladesh, marked by high mortality rates and limited clinical access to targeted precision therapies. Traditional de novo drug discovery is an extraordinarily slow and expensive process. While computational drug repurposing offers a cost-effective alternative, current AI-driven models suffer from two major barriers: Geographical/Genomic Bias (relying almost exclusively on Western cohorts) and the Black Box Problem (lacking transparent biological reasoning for clinicians). 
 
